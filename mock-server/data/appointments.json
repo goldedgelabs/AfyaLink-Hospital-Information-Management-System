@@ -1,0 +1,16 @@
+[
+  {
+    "id": "a1",
+    "patient": "Jane Doe",
+    "doctor": "Dr Kimani",
+    "date": "2025-11-20",
+    "status": "scheduled"
+  },
+  {
+    "id": "a2",
+    "patient": "John Otieno",
+    "doctor": "Dr Mwangi",
+    "date": "2025-11-22",
+    "status": "confirmed"
+  }
+]

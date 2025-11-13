@@ -1,0 +1,12 @@
+[
+  {
+    "id": "d1",
+    "fullName": "Dr Asha Mwangi",
+    "specialty": "Internal Medicine"
+  },
+  {
+    "id": "d2",
+    "fullName": "Dr Peter Kimani",
+    "specialty": "Pediatrics"
+  }
+]

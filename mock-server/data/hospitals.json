@@ -1,0 +1,12 @@
+[
+  {
+    "id": "h1",
+    "name": "Nairobi General Hospital",
+    "location": "Nairobi"
+  },
+  {
+    "id": "h2",
+    "name": "Mombasa Health Center",
+    "location": "Mombasa"
+  }
+]

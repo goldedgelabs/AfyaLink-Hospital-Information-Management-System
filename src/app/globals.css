@@ -1,0 +1,4 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root{--primary:#00BFA6;--accent:#8E2DE2}
+html,body{height:100%;font-family:Inter,system-ui;background:linear-gradient(180deg,#071023,#071427);color:#e6eef8}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:12px;border-radius:12px}
