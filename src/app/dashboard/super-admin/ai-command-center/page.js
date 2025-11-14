@@ -40,8 +40,8 @@ const COMMANDS = [
   },
   {
     key: 'system_sync',
-    label: 'Trigger System RefreshCw',
-    icon: <Sync size={18} />,
+    label: 'Trigger System Refresh',
+    icon: <RefreshCw size={18} />,
     description: 'Sync configuration and caches across hospital clusters.',
     steps: [
       'Preparing sync manifest...',
