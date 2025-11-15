@@ -16,8 +16,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { Brain, Activity, Users, Hospital, DollarSign } from "lucide-react";
-import SuperAdminNavbar from "@/components/SuperAdminNavbar";
-import SuperAdminSidebar from "@/components/SuperAdminSidebar";
+import SuperAdminSidebar from "@/components/SuperAdminSidebar"; // ✔ Sidebar only
 
 export default function SuperAdminDashboard() {
   const [stats, setStats] = useState({});
@@ -64,8 +63,10 @@ export default function SuperAdminDashboard() {
   return (
     <div className="flex h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
       <SuperAdminSidebar />
+
       <div className="flex-1 flex flex-col overflow-y-auto">
-        <SuperAdminNavbar />
+        {/* Navbar is already in layout.js — DO NOT add it here */}
+
         <main className="p-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">
             Super Admin Dashboard
@@ -181,4 +182,4 @@ function KPI({ icon, label, value }) {
       </div>
     </div>
   );
-      }
+    }
