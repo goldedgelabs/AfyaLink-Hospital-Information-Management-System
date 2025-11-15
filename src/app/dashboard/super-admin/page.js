@@ -8,15 +8,14 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  BarChart,
-  Bar,
   PieChart,
   Pie,
   Cell,
   ResponsiveContainer,
 } from "recharts";
+
 import { Brain, Activity, Users, Hospital, DollarSign } from "lucide-react";
-import SuperAdminSidebar from "@/components/SuperAdminSidebar"; // ✔ Sidebar only
+import SuperAdminSidebar from "@/components/SuperAdminSidebar"; // Sidebar only
 
 export default function SuperAdminDashboard() {
   const [stats, setStats] = useState({});
@@ -25,22 +24,24 @@ export default function SuperAdminDashboard() {
 
   const COLORS = ["#6366F1", "#22C55E", "#FACC15", "#EF4444", "#3B82F6"];
 
-  // Fetch mock analytics data
+  // Fetch analytics data
   useEffect(() => {
     fetch("/api/analytics")
       .then((res) => res.json())
       .then(setStats);
   }, []);
 
-  // Ask NeuroEdge AI for a system insight
+  // Ask NeuroEdge AI for insights
   const handleAskAI = async () => {
     setLoading(true);
     const res = await fetch("/api/neuroedge", {
       method: "POST",
       body: JSON.stringify({
-        prompt: "Analyze AfyaLink system performance and suggest improvements",
+        prompt:
+          "Analyze AfyaLink system performance and suggest improvements",
       }),
     });
+
     const data = await res.json();
     setAISummary(data.reply);
     setLoading(false);
@@ -65,14 +66,14 @@ export default function SuperAdminDashboard() {
       <SuperAdminSidebar />
 
       <div className="flex-1 flex flex-col overflow-y-auto">
-        {/* Navbar is already in layout.js — DO NOT add it here */}
+        {/* Navbar is already in layout.js - DO NOT add here */}
 
         <main className="p-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">
             Super Admin Dashboard
           </h1>
 
-          {/* KPIs Section */}
+          {/* KPIs */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <KPI
               icon={<Users className="text-indigo-600" size={28} />}
@@ -98,7 +99,7 @@ export default function SuperAdminDashboard() {
 
           {/* Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Revenue Line Chart */}
+            {/* Revenue Chart */}
             <div className="bg-white/60 backdrop-blur-md p-4 rounded-2xl shadow-md">
               <h2 className="text-lg font-semibold mb-3">
                 Revenue Growth (Mock)
@@ -119,7 +120,7 @@ export default function SuperAdminDashboard() {
               </ResponsiveContainer>
             </div>
 
-            {/* Satisfaction Pie Chart */}
+            {/* Satisfaction Chart */}
             <div className="bg-white/60 backdrop-blur-md p-4 rounded-2xl shadow-md">
               <h2 className="text-lg font-semibold mb-3">
                 Patient Satisfaction
@@ -131,13 +132,12 @@ export default function SuperAdminDashboard() {
                     cx="50%"
                     cy="50%"
                     outerRadius={80}
-                    fill="#8884d8"
                     dataKey="value"
                     label
                   >
                     {satisfactionData.map((entry, index) => (
                       <Cell
-                        key={`cell-${index}`}
+                        key={index}
                         fill={COLORS[index % COLORS.length]}
                       />
                     ))}
@@ -148,11 +148,12 @@ export default function SuperAdminDashboard() {
             </div>
           </div>
 
-          {/* AI Summary */}
+          {/* AI Insights */}
           <div className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-md">
             <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
               <Brain className="text-indigo-600" /> NeuroEdge AI Insights
             </h2>
+
             <button
               onClick={handleAskAI}
               disabled={loading}
@@ -160,8 +161,11 @@ export default function SuperAdminDashboard() {
             >
               {loading ? "Analyzing..." : "Ask NeuroEdge AI"}
             </button>
+
             {aiSummary && (
-              <p className="mt-4 text-gray-700 leading-relaxed">{aiSummary}</p>
+              <p className="mt-4 text-gray-700 leading-relaxed">
+                {aiSummary}
+              </p>
             )}
           </div>
         </main>
@@ -182,4 +186,4 @@ function KPI({ icon, label, value }) {
       </div>
     </div>
   );
-    }
+}
